@@ -1,0 +1,20 @@
+start.spring.io , go to this website that will make the code for 
+inside the visual studio you will install the spring boot extension pack.
+
+
+select the project as maven , language as java
+then the group name is com.aayush
+artifact means the name of the Project, so its learningSpringBootApp
+package name is the concatenation of the group name and the artefact
+
+jar is the files for the java archive
+war is the file for the web archive
+
+check the jar file
+check the version of java by cmd : java --version
+mine is 24 so , i will select the 21 
+
+on the right hand side you will add the dependency, add the spring web,
+then click to generate that will create a zip file.
+
+
