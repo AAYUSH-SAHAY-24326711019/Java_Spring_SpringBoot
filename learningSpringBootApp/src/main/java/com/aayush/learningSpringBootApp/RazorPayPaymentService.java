@@ -3,7 +3,8 @@ package com.aayush.learningSpringBootApp;
 
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
+
 public class RazorPayPaymentService implements PaymentService {
 
     @Override

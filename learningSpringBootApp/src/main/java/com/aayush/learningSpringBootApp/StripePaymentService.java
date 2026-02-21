@@ -15,6 +15,6 @@ import org.springframework.stereotype.Controller;
 public class StripePaymentService implements PaymentService{
     @Override
     public String pay() {
-        return "";
+        return "Stripe payment System";
     }
 }
