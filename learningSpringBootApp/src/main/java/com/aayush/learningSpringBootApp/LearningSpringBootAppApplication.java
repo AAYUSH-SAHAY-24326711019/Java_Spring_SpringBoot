@@ -28,6 +28,21 @@ public class LearningSpringBootAppApplication implements CommandLineRunner
 //	//beans allow to add the loose coupling
 	//cannot set this as the private final
 
+
+//lesson 3 : There is always need to recompile the code. [needs to be prevented]
+//	Now we have implemented loose coupling , you can use any payment system
+	//required at any time.
+
+	//Time to make a configuration file that would decide.
+	//what bean to be used.
+	/*
+	* Step 1 goto resources/application.properties.
+	* add this line : payment.provider=stripe
+	*
+	* Now above needs to be notifed, see the RazorPay file
+	* */
+
+
 	@Override
 	public void run(String ... args) throws Exception{
 
