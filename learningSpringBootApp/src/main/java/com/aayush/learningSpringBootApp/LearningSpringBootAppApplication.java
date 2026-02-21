@@ -42,6 +42,10 @@ public class LearningSpringBootAppApplication implements CommandLineRunner
 	* Now above needs to be notifed, see the RazorPay file
 	* */
 
+	/* lesson 4:
+	in the properties file add debug = true
+	 to know what beans are made is then after shown in the logs
+	 */
 
 	@Override
 	public void run(String ... args) throws Exception{
