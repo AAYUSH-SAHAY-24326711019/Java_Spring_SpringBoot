@@ -1,5 +1,6 @@
 package com.aayush.learningSpringBootApp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,14 +10,19 @@ public class LearningSpringBootAppApplication implements CommandLineRunner
 {
 
 //	private RazorPayPaymentService paymentService = new RazorPayPaymentService();
+//lesson 1 : Constructor dependency injection
+	//make the dependency [this is the best one] explicit (can make public and final)
+//	private RazorPayPaymentService paymentService;
+//	public LearningSpringBootAppApplication(RazorPayPaymentService paymentService){
+//		this.paymentService = paymentService;
+//	}
+//Notes :dependency injection will create the object.
 
-	//make the dependency
+	//lesson 2 is use of the Autowired annotation
+	//this is a field injection.
+	@Autowired
 	private RazorPayPaymentService paymentService;
-	public LearningSpringBootAppApplication(RazorPayPaymentService paymentService){
-		this.paymentService = paymentService;
-	}
-
-
+	//beans allow to add the loose coupling
 
 	@Override
 	public void run(String ... args) throws Exception{
