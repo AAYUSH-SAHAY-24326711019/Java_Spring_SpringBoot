@@ -1,0 +1,105 @@
+ioc container is the inversion of control container
+
+this will make the objects [ known as bean] and make it for
+you without running the new keyword.
+
+Plain old java objects are the scripts where the objects will be made
+accroding to basic java.
+
+also there is a single entry point inside the spring boot application
+
+the entry point is @SpringBootApplication and it has the.
+main method and it is present in the main program  or that class 
+which is given the annotation of @SpringBootApplication must have the main method.
+
+there is the component scanning from the root level package.
+the scan is recursive and the package must contain sub packages so that all works
+all together
+
+enabling the auto configuration that makes the spring application to the spring boot
+application, this will automatically configure the dependency according to your project
+
+if you go and see the external libraries. you can see many types of the maven dependency
+when we started the project jar making we downloaded the dependency
+
+[They are the spring boot auto configurations]
+
+steps to running of the Spring Boot Application:
+
+How a Spring Boot application works (simple flow)
+
+1️⃣ Main method runs
+
+@SpringBootApplication
+public class App {
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
+    }
+}
+
+This starts everything.
+
+2️⃣ Auto-Configuration starts
+
+Spring Boot checks dependencies in pom.xml
+
+Automatically configures:
+
+Tomcat server
+
+DispatcherServlet
+
+Database configs
+
+Beans
+
+No manual setup needed.
+
+3️⃣ IOC Container starts
+
+Spring Framework creates all beans.
+
+Injects dependencies using @Autowired.
+
+4️⃣ Embedded Server runs
+
+Built-in Tomcat starts (default port 8080).
+
+App is ready to receive HTTP requests.
+
+5️⃣ Request Flow
+Client → Controller → Service → Repository → Database → Response
+
+Example:
+
+@RestController handles request
+
+@Service contains logic
+
+@Repository talks to DB
+
+Response returned as JSON
+
+In one line:
+
+Spring Boot = Auto-config + Embedded server + IOC container + Starter dependencies
+
+If you want, I can explain it in diagram form.
+
+
+just in simple words:
+jvm starts and make the main method.
+SpringApplication.run(MyApp,args)
+then it wil detect the SpringbootConfigurations , components scan, enable auto configurations
+
+then the spring application object will set up the ApplicationContext, 
+Then it will set up the environment , registering listeners and initializers
+
+
+application context is creates, Environment is prepared eg. application.properties, args , profiles
+Then entire package where the @SpringBootApplication annotated main Class is located there begins
+the recursive scans for the beans, and then these scanned beans are registered.
+There are the webservers and the data sources.
+
+when the application context is refreshed all the beans are created , the dependencies are auto wired
+and then all the other lifecycle methods are called.

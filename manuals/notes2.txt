@@ -1,0 +1,51 @@
+the spring boot has the auto configure web dependencies, all such important are auto configured
+in your project. 
+
+all of them are @ConditionalOnPath, if these are found inside the classpath , they will
+run it. [prior some files are made as a port to which such dependency are loaded if configured
+the class path with them.]
+
+What is an api ?
+
+to give the services , go at the physical location.
+by internet you have a server that serves the site.
+clients request server and the server will respond.
+this is an api [interface that lets communication.]
+
+for api there must be a webapplication framework inside
+springboot. There is a mvc controller. The mvc will do
+the Model : DB, View : sites , Controller : Sees request
+and sends to the handler / models. Then according to the
+business logic data is send to the respective client 
+that is rendered over his GUI as the notification.
+
+using spring boot mini mvc, we can use it to make the
+json / html pages. 
+REST api will render the html pages.
+
+Request goes to the dispatcher servlet that chooses the
+most appropriate handler of the requst that talks to model
+then will View Resolver(component) will send the visual
+output to the user.
+
+Traditionally the html is not used. but React / Angular
+js use json to render on the gui.
+
+Spring Boot will also convert the requests to json.
+HTTP Methods Serialization will convert
+
+
+How it works.
+
+request to tomcat , tomcat is webserver, it will come embedded with springboot
+to handle https request that sends to the dispatcher serverlet that will make
+two objects : http servlet request and http servlet response.
+
+http data,parameters,are made to the object.
+these objects are done mapping to the respective methods to 'handler/controller' 
+that calls the method. 1st Done Validation, Authentication then we talk to the db Models
+
+then controller makes the https msg convertor to make it json and then it becomes the
+response object inside the tomcat that is redirected to the user as the response
+
+closing the learningSpringBootApp (project) and downloading a new one
