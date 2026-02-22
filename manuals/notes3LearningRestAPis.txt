@@ -1,0 +1,40 @@
+The rest api means the representational state transfer,
+widely used in most of the sites.
+
+added the Spring Web dependency and the lombok dependency 
+that reduces the effort to write the annotations for the code.
+
+inside the main package, we will make a subpackage named as Controller
+then make the service package the same way that will store the database models there.
+then there is a data access layer which is also called the persistence layer.
+make the pakage inside there. named it as the entity package.
+
+then there will be a repository pacakage
+
+request goes to controller, then service is called by the controller
+and then service will inturn use the entity and the repository.
+
+how does it work?
+
+client request goes to the presentation layer.
+The presentation layer communicates to the service layer as DTO (data transfer object)
+and the service layer will communicate to the perisistence layer that will communicate
+to the database and then on the back way -> enity then dto then response to the client.
+
+3 layer architecture, encapuslated the workflow and the models are not exposed.
+
+
+lets make a student managemnt
+
+we made the studentController class that holds the annotations.
+then it will also respond if the the url pattern is localhost:8080/student,
+it will return the data as the form of the json format.
+
+behind the scenes tomcat webserver running, web dependency of springboot
+manages the json and spring mvc that handles the services.
+
+https message converter will convert the java object into the json object.
+done by the jackson library of spring.
+
+we can make the get / post / delete and manage the databases.
+we will use the mysql database to handle the persistance layer.
