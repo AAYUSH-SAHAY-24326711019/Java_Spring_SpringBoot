@@ -48,4 +48,12 @@ public class StudentController{
     }
 
 //    --------------------Post Mapping end--------------------
+
+    //----Delete Mapping start -----
+    @DeleteMapping("/students/{id}")
+    public ResponseEntity<Void> deleteStudent(@PathVariable Long id){
+        studentService.deleteStudentById(id);
+        return ResponseEntity.noContent().build();
+    }
+    //----Delete Mapping end -----
 }

@@ -1,3 +1,21 @@
 you will now use the postman to check the api for the post requests.
 
 you will also see that the context path was / by default but now you will change it.
+
+send this :
+{
+    "name":"demo-entry",
+    "email":"demo-entry@gmail.com"
+}
+
+at the url : that was changed as :
+
+server.servlet.context-path = /api
+
+postman gives me the response :
+
+{
+    "id": 1,
+    "name": "demo-entry",
+    "email": "demo-entry@gmail.com"
+}
