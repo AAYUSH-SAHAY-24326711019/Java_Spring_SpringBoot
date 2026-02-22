@@ -39,7 +39,7 @@ public class LearningSpringBootAppApplication implements CommandLineRunner
 	* Step 1 goto resources/application.properties.
 	* add this line : payment.provider=stripe
 	*
-	* Now above needs to be notifed, see the RazorPay file
+	* Now above needs to be notified, see the RazorPay file
 	* */
 
 	/* lesson 4:
