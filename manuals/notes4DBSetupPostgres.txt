@@ -8,3 +8,26 @@ you need to connect it with your postgresql with the password and then make the
 database : studentsDB
 
 then currently this project is ending for now, we will make it again.
+
+now add the dependency and paste these into it
+
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+* you can get this by going to the spring framework and copy the dependency from there
+add the dependency and click on explore then copy them and paste into the pom.xml file
+
+then you can click on the sync maven changes there.
+
+now go to the application properties there mention your string of the database.
+so inoreder to connect
+
+to the pom.xml of the learningRestApis
