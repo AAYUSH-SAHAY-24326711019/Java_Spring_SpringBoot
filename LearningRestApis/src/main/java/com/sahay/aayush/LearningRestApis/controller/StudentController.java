@@ -5,8 +5,10 @@ import com.sahay.aayush.LearningRestApis.entity.Student;
 import com.sahay.aayush.LearningRestApis.repository.StudentRepository;
 import com.sahay.aayush.LearningRestApis.service.StudentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -47,4 +49,10 @@ public class StudentController{
     }
 
 
+//    --------------------Post Mapping start--------------------
+    //This is used to store / create
+    @PostMapping
+    public ResponseEntity<StudentDto>
+
+//    --------------------Post Mapping end--------------------
 }

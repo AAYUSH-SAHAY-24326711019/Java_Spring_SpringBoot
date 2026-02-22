@@ -25,8 +25,18 @@ public class StudentServiceImpl implements StudentService {
 //                student ->new StudentDto(student.getId(),
 //                        student.getName(),
 //                        student.getEmail())).toList();
+
+
+//        return students.stream().map(
+//                student ->modelMapper.map(student,StudentDto.class)).toList();
+
         return students.stream().map(
-                student ->modelMapper.map(student,StudentDto.class)).toList();
+                student -> new StudentDto(
+                        student.getId(),
+                        student.getName(),
+                        student.getEmail()
+                )
+        ).toList();
 
     }
 
