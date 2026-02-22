@@ -5,4 +5,4 @@ touch StudentService inside the servies make an interface
 make a new package as impl for the implementations
 make the student service implementation into that
 
-stram has map and filter that will transform one collection to other collection
+stream has map and filter that will transform one collection to other collection

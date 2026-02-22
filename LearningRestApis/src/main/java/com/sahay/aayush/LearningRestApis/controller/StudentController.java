@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class StudentController {
+public class StudentController{
 
     /*@GetMapping("/student")
     public StudentDto getStudent(){
@@ -40,9 +40,11 @@ public class StudentController {
     //added other url pattern
     @GetMapping("/students/{id}")
 //    public StudentDto getStudentById(@PathVariable Long id){
-    public String getStudentById(@PathVariable Long id){
+    public StudentDto getStudentById(@PathVariable Long id){
 //        return new StudentDto(1234,"student_name_on id request","student_email@gmail.com");
-    return "Path variable "+id;
+//    return "Path variable "+id+" and name is :"+name;
+        return studentService.getStudentById(id);
     }
+
 
 }
