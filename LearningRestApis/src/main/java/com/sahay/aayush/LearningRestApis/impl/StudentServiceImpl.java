@@ -1,5 +1,6 @@
 package com.sahay.aayush.LearningRestApis.impl;
 
+import com.sahay.aayush.LearningRestApis.dto.AddStudentRequestDto;
 import com.sahay.aayush.LearningRestApis.dto.StudentDto;
 import com.sahay.aayush.LearningRestApis.entity.Student;
 import com.sahay.aayush.LearningRestApis.repository.StudentRepository;
@@ -44,5 +45,13 @@ public class StudentServiceImpl implements StudentService {
     public StudentDto getStudentById(Long id) {
         Student student = studentRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Student not found with id"));
        return modelMapper.map(student,StudentDto.class);
+    }
+
+    @Override
+    public StudentDto createNewStudent(AddStudentRequestDto addStudentRequestDto) {
+        //adding using student repository
+        Student newStudent = modelMapper.map(addStudentRequestDto,Student.class);
+        Student student = studentRepository.save(newStudent);
+        return modelMapper.map(student,StudentDto.class);
     }
 }

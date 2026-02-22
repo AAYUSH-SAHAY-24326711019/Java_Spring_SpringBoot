@@ -1,0 +1,3 @@
+you will now use the postman to check the api for the post requests.
+
+you will also see that the context path was / by default but now you will change it.
