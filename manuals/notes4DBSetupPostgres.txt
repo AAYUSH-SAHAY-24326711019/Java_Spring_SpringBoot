@@ -1,0 +1,10 @@
+Now to setup the Postgressql to the Simple Springboot app.
+
+donwloaded postgresql, and setup the password: root and username is postgresql
+then downloaded the dbeaver community and it wanted to download java for itself then
+revoked it there. 
+
+you need to connect it with your postgresql with the password and then make the 
+database : studentsDB
+
+then currently this project is ending for now, we will make it again.
