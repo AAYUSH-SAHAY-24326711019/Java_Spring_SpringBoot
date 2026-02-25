@@ -3,6 +3,7 @@ package com.sahay.aayush.LearningRestApis.controller;
 import com.sahay.aayush.LearningRestApis.dto.AddStudentRequestDto;
 import com.sahay.aayush.LearningRestApis.dto.StudentDto;
 import com.sahay.aayush.LearningRestApis.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,9 +38,12 @@ public class StudentController{
 //    --------------------Post Mapping start--------------------
     //This is used to store / create
     //you can define body, status codes
+
+    //<New> That the input should be validated.
+
     @PostMapping("/students")
     public ResponseEntity<StudentDto>
-    createNewStudent(@RequestBody AddStudentRequestDto addStudentRequestDto){
+    createNewStudent(@RequestBody @Valid AddStudentRequestDto addStudentRequestDto){
         return ResponseEntity.status(
                 HttpStatus.CREATED).body(studentService.createNewStudent(addStudentRequestDto));
     }
