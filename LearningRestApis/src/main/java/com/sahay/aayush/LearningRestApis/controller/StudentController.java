@@ -2,12 +2,8 @@ package com.sahay.aayush.LearningRestApis.controller;
 
 import com.sahay.aayush.LearningRestApis.dto.AddStudentRequestDto;
 import com.sahay.aayush.LearningRestApis.dto.StudentDto;
-import com.sahay.aayush.LearningRestApis.entity.Student;
-import com.sahay.aayush.LearningRestApis.repository.StudentRepository;
 import com.sahay.aayush.LearningRestApis.service.StudentService;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
-import org.springframework.boot.autoconfigure.graphql.GraphQlProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -56,4 +52,13 @@ public class StudentController{
         return ResponseEntity.noContent().build();
     }
     //----Delete Mapping end -----
+
+    //---------Patch Mapping start ---------------
+    @PutMapping("/students/{id}")
+    public ResponseEntity<StudentDto> updateStudent
+    (@PathVariable Long id,@RequestBody AddStudentRequestDto addStudentRequestDto){
+        return ResponseEntity.ok(studentService.updateStudent(id,addStudentRequestDto));
+    }
+    //---------Patch Mapping end ---------------
+
 }

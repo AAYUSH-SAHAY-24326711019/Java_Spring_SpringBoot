@@ -19,3 +19,6 @@ postman gives me the response :
     "name": "demo-entry",
     "email": "demo-entry@gmail.com"
 }
+
+now implemented delete and paste this :
+http://localhost:8080/api/students/1 
