@@ -16,5 +16,5 @@ public class AddStudentRequestDto {
     @Email
     @NotBlank(message="message:Email is required") //required
 
-    private String email;
+    private String email; //closing Student management System
 }
