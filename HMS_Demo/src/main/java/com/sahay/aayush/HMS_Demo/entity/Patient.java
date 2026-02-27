@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @ToString
@@ -32,14 +34,24 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    private String name;
+    @Column(name="patient_name",nullable = false, length=40) //to rename the table and make it not null
+    private String name; //and giving it the length of 40
     //making the index based on the birthdate to make the query processing very fast.
     //faster retrival but the insertion will now become slow.
 
     private LocalDate birthDate;
     // if dont need gender then @ToString.Exclude
+
+    //adding a new field and making this a unique field.
+    @Column(unique = true,nullable = false) //this also makes the field required.
+    private String email;
+
     private String gender;
+
+    //making a new field to store the timestamp of the record creation
+    @CreationTimestamp
+    @Column(updatable = false) //cannot update.
+    private LocalDateTime createdAt;
 /* Making a To String explicitly
 
     @Override
