@@ -11,5 +11,5 @@ public class AdminLoginRequestDto {
     private String email;
 
     @NotBlank(message = "Code is required")
-    private String code;
+    private String password;
 }
