@@ -1,6 +1,9 @@
 package com.projects.springbootdemo.LoginLogoutDemo.controller;
 
 import com.projects.springbootdemo.LoginLogoutDemo.dto.AdminLoginRequestDto;
+import com.projects.springbootdemo.LoginLogoutDemo.entity.AdminActivity;
+import com.projects.springbootdemo.LoginLogoutDemo.entity.LoginAction;
+import com.projects.springbootdemo.LoginLogoutDemo.repository.AdminActivityRepository;
 import com.projects.springbootdemo.LoginLogoutDemo.service.AdminService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -37,6 +40,9 @@ public class AdminController {
 @RequiredArgsConstructor
 public class AdminController {
     private final AdminService adminService;
+//-----------------Activity Logging code Start------------------------
+private final AdminActivityRepository activityRepository;
+//-----------------Activity Logging code End------------------------
 
     @GetMapping("/")
     public String loginPage() {
@@ -84,10 +90,20 @@ public String login(@Valid @ModelAttribute AdminLoginRequestDto request,
         return "redirect:/AdminLogin.html";
     }
 
-
+/* Temporary Commented
+    session.setAttribute("loggedInAdmin", request.getEmail());
+    return "redirect:/AdminDashboard.html";
+ */
     session.setAttribute("loggedInAdmin", request.getEmail());
 
-    return "redirect:/AdminDashboard.html";
+    activityRepository.save(
+            AdminActivity.builder()
+                    .adminEmail(request.getEmail())
+                    .action(LoginAction.LOGIN)
+                    .build()
+    );
+
+    return "redirect:/dashboard";
 }
 
 //-----------Dashboard Code Url Mapping Start----------------------
@@ -103,14 +119,37 @@ public String dashboard(HttpSession session) {
 //-----------Dashboard Code Url Mapping End----------------------
 
 //-----------Implementation of the Code of Logout  Start ---------------
+
+
+    /* Older Version of the code for Logout
 @GetMapping("/logout")
 public String logout(HttpSession session) {
 
     session.invalidate();   // destroys session
 
     return "redirect:/";
-}
+}*/
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+
+        String email = (String) session.getAttribute("loggedInAdmin");
+
+        if (email != null) {
+            activityRepository.save(
+                    AdminActivity.builder()
+                            .adminEmail(email)
+                            .action(LoginAction.LOGOUT)
+                            .build()
+            );
+        }
+
+        session.invalidate();
+        return "redirect:/";
+    }
+
 //-----------Implementation of the Code of Logout  End ---------------
+
 
 }
 
