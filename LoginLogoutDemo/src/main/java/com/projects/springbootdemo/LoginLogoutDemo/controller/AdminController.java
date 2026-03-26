@@ -45,6 +45,11 @@ private final AdminActivityRepository activityRepository;
 //-----------------Activity Logging code End------------------------
 
     @GetMapping("/")
+    public String patient_ui_web() {
+
+        return "forward:/patient_ui_webview/main_page_web.html";
+    }
+    @GetMapping("/admin_login")
     public String loginPage() {
         return "forward:/AdminLogin.html";
     }
