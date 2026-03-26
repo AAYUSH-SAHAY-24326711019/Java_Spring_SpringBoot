@@ -1,0 +1,162 @@
+/* Google font style feel without import dependency */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(to right, #eef5ff, #f8fbff);
+}
+
+
+/* HEADER */
+
+header {
+    background: #2c5aa0;
+    color: white;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 22px;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+
+/* MAIN CONTAINER */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+
+/* CARD */
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.08);
+    width: 80%;
+    max-width: 1000px;
+}
+
+
+/* TITLE */
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c5aa0;
+}
+
+
+/* FORM GRID LAYOUT */
+
+#appointmentForm {
+     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(540px, 1fr));
+    gap: 25px;
+}
+
+
+/* FORM GROUP */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 16px;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #444;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccd6e0;
+    font-size: 16px;
+}
+
+
+/* BUTTON */
+
+.btn {
+    grid-column: span 2;
+    padding: 16px;
+    background: #2c5aa0;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.btn:hover {
+    background: #1f3f73;
+}
+
+
+/* RESPONSIVE TABLET */
+
+@media (max-width: 900px) {
+
+    .card {
+        width: 92%;
+        padding: 30px;
+    }
+
+    #appointmentForm {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* RESPONSIVE MOBILE */
+
+@media (max-width: 500px) {
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    nav ul li a {
+        font-size: 15px;
+    }
+
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Appointment</title>
+
+<link rel="stylesheet" href="styles/appointments_patients.css">
+<link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+<header>
+        <h1>Hospital Management System</h1>
+        <nav>
+            <ul>
+                <!-- Unnecessary components -->
+                <!-- <li><a href="staffPortal.jsp">Staff-Portal</a></li> -->
+                <!-- <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+                <li><a href="#" onclick="showSection('patients')">Patients</a></li> 
+                <li><a href="loadPatients">Patients List</a></li>
+                <li><a href="loadAppointments">Appointments List</a></li>
+                <li><a href="billing.jsp">Billing System</a></li>
+                <li><a href="#" onclick="showSection('tokens')">Token System</a></li>-->
+                <!-- Unnecessary components -->
+
+                <!-- important components -->
+
+                <li><a href="appointments_patients.html" >Appointments</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- -------------make css of this section -->
+    <div class="container">
+        
+    <div class="card">
+        <h2>Book Appointment</h2>
+        
+        <form id="appointmentForm" action="bookappointment" method="post">
+            
+            <div class="form-group">
+                <label>Patient Name</label>
+                <input type="text" name="aname" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Doctor</label>
+                <select name="adoctor">
+                    <option>Dr. Sharma (Cardiologist)</option>
+                    <option>Dr. Patel (Dermatologist)</option>
+                    <option>Dr. Verma (General Physician)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" name="adate" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Town / District</label>
+                <input type="text" name="town_district" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Area / Locality</label>
+                <input type="text" name="area_locality" required>
+            </div>
+            
+            <div class="form-group">
+                <label>State</label>
+                <input type="text" name="state" required>
+            </div>
+            
+            <button type="submit" class="btn">
+                Book Appointment
+            </button>
+            
+        </form>
+    </div>
+    
+</div>
+<!-- -------------make css of this section -->
+
+</body>
+</html>

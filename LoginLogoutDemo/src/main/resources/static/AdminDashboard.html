@@ -232,7 +232,7 @@ svg{
       <section class="grid" aria-label="Modules">
 
         <!-- 1 Staff Module -->
-        <button class="tile" type="button" data-module="staff">
+        <button class="tile" type="button" data-module="staff" onclick="">
           <div class="icon-wrap" aria-hidden="true">
             <svg viewBox="0 0 64 64" class="svg-full">
               <defs>
@@ -250,7 +250,8 @@ svg{
               <rect x="25" y="17" width="14" height="4" rx="2" fill="#ffffff"/>
             </svg>
           </div>
-          <div class="tile-label">Staff Module</div>
+          <div class="tile-label">Doctors Module</div>
+
         </button>
 
         <!-- 2 Admin Team -->
@@ -420,17 +421,17 @@ svg{
     setInterval(tick, 1000 * 20);
 
     // ===== Logout (demo) =====
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      alert('Logout clicked (demo). Connect to your real logout action.');
-    });
+<!--    document.getElementById('logoutBtn').addEventListener('click', () => {-->
+<!--      alert('Logout clicked (demo). Connect to your real logout action.');-->
+<!--    });-->
 
     // ===== Module clicks (demo hooks) =====
-    document.querySelectorAll('.tile').forEach(tile => {
-      tile.addEventListener('click', () => {
-        const key = tile.getAttribute('data-module');
-        alert(`Module clicked: ${key} (demo)`);
-      });
-    });
+<!--    document.querySelectorAll('.tile').forEach(tile => {-->
+<!--      tile.addEventListener('click', () => {-->
+<!--        const key = tile.getAttribute('data-module');-->
+<!--        alert(`Module clicked: ${key} (demo)`);-->
+<!--      });-->
+<!--    });-->
   </script>
 </body>
 </html>
