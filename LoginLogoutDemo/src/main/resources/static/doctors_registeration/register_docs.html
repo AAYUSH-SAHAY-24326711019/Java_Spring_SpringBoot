@@ -173,7 +173,35 @@ button:hover {
 
     </form>
 </div>
+<script>
+    document.getElementById("doctorForm").addEventListener("submit", function(e) {
+        e.preventDefault();
 
+        const doctor = {
+            name: document.getElementById("name").value,
+            specialization: document.getElementById("specialization").value.replace(" ", "_"),
+            age: document.getElementById("age").value,
+            gender: document.querySelector('input[name="gender"]:checked').value
+        };
+
+        fetch("http://localhost:8080/doctor/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(doctor)
+        })
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("successMsg").innerText = "Doctor Registered Successfully!";
+            document.getElementById("doctorForm").reset();
+        })
+        .catch(err => {
+            console.error(err);
+            document.getElementById("successMsg").innerText = "Error occurred!";
+        });
+    });
+</script>
 
 </body>
 </html>
