@@ -2,17 +2,22 @@ package com.projects.springbootdemo.LoginLogoutDemo.controller;
 
 import com.projects.springbootdemo.LoginLogoutDemo.dto.AdminLoginRequestDto;
 import com.projects.springbootdemo.LoginLogoutDemo.entity.AdminActivity;
+import com.projects.springbootdemo.LoginLogoutDemo.entity.Doctor;
 import com.projects.springbootdemo.LoginLogoutDemo.entity.LoginAction;
 import com.projects.springbootdemo.LoginLogoutDemo.repository.AdminActivityRepository;
+import com.projects.springbootdemo.LoginLogoutDemo.repository.DoctorRepository;
 import com.projects.springbootdemo.LoginLogoutDemo.service.AdminService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 /* Updated the logic for Admin Controller, [Delete section on print]
 @Controller
@@ -53,6 +58,8 @@ private final AdminActivityRepository activityRepository;
     public String loginPage() {
         return "forward:/AdminLogin.html";
     }
+
+
 
 /* Second Update that used no session [Exclude this section incase printing]
 -----------------------------------------------------------------------------

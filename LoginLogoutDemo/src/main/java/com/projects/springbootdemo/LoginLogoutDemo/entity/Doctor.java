@@ -17,7 +17,8 @@ import java.util.Random;
 public class Doctor {
 
     @Id
-    private Integer doctorId;
+    @Column(name = "doctor_id")
+    private Long doctorId;
 
     private String name;
 
@@ -38,7 +39,7 @@ public class Doctor {
     // Auto-generate ID & date
     @PrePersist
     public void beforeSave() {
-        this.doctorId = new Random().nextInt(9000) + 1000; // 4 digit
+        this.doctorId = new Random().nextLong(9000) + 1000; // 4 digit
         this.registeredDate = LocalDateTime.now();
     }
 

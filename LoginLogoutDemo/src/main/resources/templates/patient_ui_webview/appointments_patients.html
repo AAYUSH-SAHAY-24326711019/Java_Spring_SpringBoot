@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Book Appointment</title>
 
-<link rel="stylesheet" href="styles/appointments_patients.css">
-<link rel="stylesheet" href="styles/style.css">
+<link rel="stylesheet" th:href="@{/patient_ui_webview/styles/appointments_patients.css}">
+<link rel="stylesheet" th:href="@{/patient_ui_webview/styles/style.css}">
 </head>
 
 <body>
@@ -47,9 +47,10 @@
             <div class="form-group">
                 <label>Doctor</label>
                 <select name="adoctor">
-                    <option>Dr. Sharma (Cardiologist)</option>
-                    <option>Dr. Patel (Dermatologist)</option>
-                    <option>Dr. Verma (General Physician)</option>
+                    <option th:each="doc : ${doctors}"
+                            th:value="${doc.doctorId}"
+                            th:text="${doc.name + ' (' + doc.specialization + ')'}">
+                    </option>
                 </select>
             </div>
             
