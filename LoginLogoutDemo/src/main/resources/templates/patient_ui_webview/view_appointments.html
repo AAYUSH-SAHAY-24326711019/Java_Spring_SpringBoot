@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Records Table</title>
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI;
+}
+
+body{
+background:#6f7f8b;
+display:flex;
+justify-content:center;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:1000px;
+background:#7c8b98;
+padding:20px;
+border-radius:12px;
+}
+
+/* top bar */
+
+.top-bar{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:15px;
+}
+
+.page-box,
+.date-box{
+flex:1;
+background:#5d6670;
+padding:12px;
+border-radius:10px;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+}
+
+/* table */
+
+.table-header{
+display:grid;
+grid-template-columns:
+1fr 2fr 1fr 2fr 1fr;
+gap:10px;
+margin-bottom:10px;
+}
+
+.table-header div{
+background:#4c545c;
+padding:10px;
+border-radius:8px;
+text-align:center;
+color:white;
+font-weight:600;
+}
+
+.table-body{
+background:#d6d4cc;
+min-height:250px;
+border-radius:15px;
+padding:10px;
+}
+
+.row{
+display:grid;
+grid-template-columns:
+1fr 2fr 1fr 2fr 1fr;
+gap:10px;
+margin-bottom:8px;
+}
+
+.row div{
+background:white;
+padding:8px;
+border-radius:6px;
+text-align:center;
+}
+
+/* actions menu */
+
+.actions{
+position:relative;
+}
+
+.menu-btn{
+padding:5px 12px;
+border:none;
+background:#4c545c;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+.overlay{
+position:absolute;
+top:35px;
+right:0;
+background:white;
+border-radius:8px;
+box-shadow:0 4px 12px rgba(0,0,0,0.25);
+display:none;
+flex-direction:column;
+z-index:10;
+overflow:hidden;
+}
+
+.overlay button{
+border:none;
+background:none;
+padding:8px 12px;
+cursor:pointer;
+text-align:left;
+width:140px;
+}
+
+.overlay button:hover{
+background:#eee;
+}
+
+.disabled-row{
+opacity:0.45;
+pointer-events:none;
+}
+
+/* pagination */
+
+.pagination{
+margin-top:15px;
+display:flex;
+justify-content:center;
+gap:10px;
+}
+
+.pagination button{
+padding:6px 12px;
+border:none;
+background:#4c545c;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+.pagination button.active{
+background:#00b894;
+}
+
+/* responsive */
+
+@media(max-width:700px){
+
+.table-header,
+.row{
+grid-template-columns:1fr 1fr;
+}
+
+.actions{
+grid-column: span 2;
+}
+
+}
+
+.table-header,
+.row{
+grid-template-columns:
+1fr 2fr 1fr 2fr auto;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="top-bar">
+
+<div class="page-box">
+    Page : <span th:text="${currentPage + 1}">1</span>
+</div>
+
+<div class="date-box">
+Date :
+<form method="get"  th:action="@{/view_appointments}">
+
+<input
+type="date"
+name="date"
+th:value="${selectedDate}"
+onchange="this.form.submit()">
+
+
+</form>
+</div>
+
+</div>
+
+<div class="table-header">
+<div>Date</div>
+<div>Name</div>
+<div>Doctor</div>
+<div>Contact</div>
+<div>Actions</div>
+</div>
+
+<div class="table-body">
+
+<div th:if="${appointments.totalElements == 0}">
+No Records to Display
+</div>
+
+<div th:each="a : ${appointments.content}" class="row">
+
+<div th:text="${a.adate}"></div>
+
+<div th:text="${a.aname}"></div>
+
+<div th:text="${a.adoctor}"></div>
+
+<div th:text="${a.townDistrict}"></div>
+
+<div class="actions">
+
+<button class="menu-btn">...</button>
+
+</div>
+
+</div>
+
+</div>
+
+    <div class="pagination">
+
+<span th:each="d, i : ${datePages}">
+
+<a th:href="@{/view_appointments(page=${i.index})}">
+
+<button
+        th:text="${i.index + 1}"
+        th:classappend="${i.index == currentPage} ? 'active'">
+</button>
+
+</a>
+
+</span>
+
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+
+/* datepicker */
+
+flatpickr("#datePicker",{dateFormat:"Y-m-d"});
+
+/* temporary dataset */
+
+let records=[
+
+{date:"2026-03-01",name:"Aayush",for:"Checkup",contact:"987654321",status:null},
+{date:"2026-03-02",name:"Rahul",for:"Dental",contact:"987654322",status:null},
+{date:"2026-03-03",name:"Priya",for:"Eye",contact:"987654323",status:null},
+{date:"2026-03-04",name:"Aman",for:"Ortho",contact:"987654324",status:null},
+{date:"2026-03-05",name:"Riya",for:"Skin",contact:"987654325",status:null},
+{date:"2026-03-06",name:"Vikas",for:"General",contact:"987654326",status:null},
+{date:"2026-03-07",name:"Neha",for:"Checkup",contact:"987654327",status:null},
+{date:"2026-03-08",name:"Rohit",for:"Dental",contact:"987654328",status:null}
+
+];
+
+let currentPage=1;
+let rowsPerPage=4;
+
+/* render table */
+
+function renderTable(){
+
+let table=document.getElementById("tableBody");
+
+table.innerHTML="";
+
+let start=(currentPage-1)*rowsPerPage;
+let end=start+rowsPerPage;
+
+let paginated=records.slice(start,end);
+
+paginated.forEach((r,index)=>{
+
+let realIndex=start+index;
+
+table.innerHTML+=`
+
+<div class="row ${r.status?'disabled-row':''}">
+
+<div>${r.date}</div>
+<div>${r.name}</div>
+<div>${r.for}</div>
+<div>${r.contact}</div>
+
+<div class="actions">
+
+<button class="menu-btn"
+onclick="toggleMenu(${realIndex})">...</button>
+
+<div class="overlay"
+id="menu-${realIndex}">
+
+<button onclick="setStatus(${realIndex},'Attended')">
+Attended
+</button>
+
+<button onclick="setStatus(${realIndex},'Unattended')">
+Unattended
+</button>
+
+<button onclick="setStatus(${realIndex},'Postponed')">
+Postponed
+</button>
+
+<button onclick="setStatus(${realIndex},'Deleted')">
+Deleted
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("pageNumber").innerText=currentPage;
+
+renderPagination();
+
+}
+
+/* menu toggle */
+
+function toggleMenu(index){
+
+document
+.querySelectorAll(".overlay")
+.forEach(menu=>menu.style.display="none");
+
+let menu=document.getElementById(`menu-${index}`);
+
+menu.style.display="flex";
+
+}
+
+/* status select */
+
+function setStatus(index,status){
+
+records[index].status=status;
+
+renderTable();
+
+}
+
+/* pagination */
+
+function renderPagination(){
+
+let pageCount=Math.ceil(records.length/rowsPerPage);
+
+let pagination=document.getElementById("pagination");
+
+pagination.innerHTML="";
+
+for(let i=1;i<=pageCount;i++){
+
+pagination.innerHTML+=`
+
+<button
+onclick="changePage(${i})"
+class="${i===currentPage?'active':''}">
+${i}
+</button>
+
+`;
+
+}
+
+}
+
+/* change page */
+
+function changePage(page){
+
+currentPage=page;
+
+renderTable();
+
+}
+
+/* close menu if clicked outside */
+
+document.addEventListener("click",e=>{
+
+if(!e.target.closest(".actions")){
+
+document
+.querySelectorAll(".overlay")
+.forEach(menu=>menu.style.display="none");
+
+}
+
+});
+
+/* initial render */
+
+renderTable();
+
+</script>
+
+</body>
+</html>
